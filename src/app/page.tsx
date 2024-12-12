@@ -1,101 +1,223 @@
-import Image from "next/image";
+import { ArrowLeft } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import Link from "next/link";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      <div className="container mx-auto mt-10">
+        <div className="flex mb-10 text-blue-600 font-bold">
+          <ArrowLeft /> Back
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <div className="flex justify-between items-center my-7">
+          <h1 className="text-2xl font-bold">Enter Your Details</h1>
+          <span>Date of Application: 02/04/2024</span>
+        </div>
+        <div className="accordion">
+          <Accordion type="single" defaultValue="item-1" className="w-full">
+            <AccordionItem value="item-1">
+              <AccordionTrigger className="bg-blue-50 px-4 decoration-muted font-bold rounded-tr-2xl rounded-tl-2xl">
+                Selcet scheme under which you want to transfer the funds.
+              </AccordionTrigger>
+              <AccordionContent className="p-4 border-r-2 rounded-br-2xl border-l-2 rounded-bl-2xl">
+                <div className="flex justify-between items-center gap-x-4">
+                  <div className="border p-4 rounded-2xl">
+                    <div className="flex justify-between items-center">
+                      <span>USD 1 Million Scheme</span>
+                      <RadioGroup defaultValue="option-one" name="selectScheme">
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="option one" id="option-one" />
+                        </div>
+                      </RadioGroup>
+                    </div>
+                    <hr className="m-3" />
+                    <ul>
+                      <li>
+                        Fund transfer limit 1 Million USD per financial year
+                      </li>
+                      <li>
+                        Taxes must be paid for balcances held i your NR account
+                        before transferring funds to your Overseas account.
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="border p-4 rounded-2xl">
+                    <div className="flex justify-between items-center">
+                      <p>Current Income Scheme</p>
+                      <RadioGroup defaultValue="option-two" name="selectScheme">
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="option two" id="option-two" />
+                        </div>
+                      </RadioGroup>
+                    </div>
+                    <hr className="m-3" />
+                    <ul>
+                      <li>No minimum and maximum fund transfer limit.</li>
+                      <li>
+                        If your source of funds are either of dividend,
+                        interest, Rent or Pension and should not be dilluted.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="my-5">
+                  <Link className="text-blue-600 font-bold" href={"/"}>
+                    Know More
+                  </Link>
+                </div>
+                <hr className="border-b-stone-700 border-dashed my-4" />
+                <p className="text-xs text-gray-500">
+                  Purpose code for above scheme
+                </p>
+                <h1 className="text-sm font-bold">
+                  S0014MIO1-REPATRIATION OF NRO FUNDS USD 1 MILLION
+                </h1>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+
+        <div className="accordion mt-6">
+          <Accordion type="single" defaultValue="item-1" className="w-full">
+            <AccordionItem value="item-1">
+              <AccordionTrigger className="bg-blue-50 px-4 decoration-muted font-bold rounded-tr-2xl rounded-tl-2xl">
+                Debit Account Details NRO Account
+              </AccordionTrigger>
+              <AccordionContent className="p-4 border-r-2 rounded-br-2xl border-l-2 rounded-bl-2xl">
+                <h1 className="mb-3 font-bold">
+                  Account from which you want to transger the amount
+                </h1>
+                <div className="flex justify-between items-center gap-x-4">
+                  <Select>
+                    <SelectTrigger className="w-[180px]">
+                      <SelectValue placeholder="Debit Account Number" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="3756 3854 57688 88">
+                        3756 3854 57688 88
+                      </SelectItem>
+                      <SelectItem value="3854 3756 57688 88">
+                        3854 3756 57688 88
+                      </SelectItem>
+                      <SelectItem value="3854 57688 3756 88">
+                        3854 57688 3756 88
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+
+                  <Input type="text" placeholder="Either or Survior" />
+                  <Select>
+                    <SelectTrigger className="w-[180px]">
+                      <SelectValue placeholder="Nationality" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="light">Light</SelectItem>
+                      <SelectItem value="dark">Dark</SelectItem>
+                      <SelectItem value="system">System</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <hr className="border-b-stone-700 border-dashed my-4" />
+                <h1 className="text-xl font-bold my-4">
+                  Account Holder Details
+                </h1>
+                <div className="flex gap-60 items-center mb-4">
+                  <div>
+                    <span className="text-xs text-gray-500">Name</span>
+                    <h1 className="font-bold">Rajat Katiyar</h1>
+                  </div>
+                  <div>
+                    <span className="text-xs text-gray-500">Customer</span>
+                    <h1 className="font-bold">65733854</h1>
+                  </div>
+                  <div>
+                    <span className="text-xs text-gray-500">PAN</span>
+                    <h1 className="font-bold">TW*****5Y</h1>
+                  </div>
+                </div>
+                <div>
+                  <span className="text-xs text-gray-500">Address</span>
+                  <h1 className="font-bold">
+                    Villa 12, Happy Homes, Near Joggers Park, Nashik,
+                    Maharashtra, India, PIN 400053
+                  </h1>
+                </div>
+                <h1 className="text-xl font-bold my-4">Other Details</h1>
+                <div className="flex justify-between items-center gap-x-4">
+                  <div className="w-full">
+                    <span className="text-xs text-gray-500">Name</span>
+                    <Input type="text" placeholder="Either or Survior" />
+                  </div>
+                  <div className="w-full">
+                    <span className="text-xs text-gray-500">Customer</span>
+                    <Input type="date" placeholder="Either or Survior" />
+                  </div>
+                  <div className="w-full">
+                    <span className="text-xs text-gray-500">PAN</span>
+                    <Input type="text" placeholder="Either or Survior" />
+                  </div>
+                </div>
+                <div className="flex justify-between items-center gap-x-4 mt-4">
+                  <div className="w-1/3">
+                    <span className="text-xs text-gray-500">Nationality</span>
+                    <Select>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Nationality" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="Indian">Indian</SelectItem>
+                        <SelectItem value="Chinese">Chinese</SelectItem>
+                        <SelectItem value="Australian">Australian</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+                <h1 className="text-xl font-bold my-4">Amount Details</h1>
+                <div className="flex justify-between items-center gap-x-4">
+                  <div className="w-full">
+                    <span className="text-xs text-gray-500">
+                      Enter Transfer Amount (in INR)
+                    </span>
+                    <Input type="text" placeholder="10,00,000" />
+                  </div>
+                  <div className="w-full">
+                    <span className="text-xs text-gray-500">
+                      Select Currency of Transfer
+                    </span>
+                    <Select>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select Currency of Transfer" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="Indian">
+                          GBP (Pound Sterling)
+                        </SelectItem>
+                        <SelectItem value="Chinese">Chinese</SelectItem>
+                        <SelectItem value="Australian">Australian</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+                <div className="w-full">Rupees 10Lakhs Only</div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+      </div>
+    </>
   );
 }
